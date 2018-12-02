@@ -1,11 +1,49 @@
-{{> header }}
 <div class="page home">
-  <h1>Hello, {{user}}!</h1>
-  <div class="body">
-    This is Home page.<br>
-    Go to <a href="/about" data-path>About page</a><br />
-    Go to <a href="/firebase" data-path>Firebase example page</a><br />
-    Go to <a href="/mapbox" data-path>Mapbox example page</a><br />
-  </div>
+    {{> header }}
+
+    <div class="modes">
+        <div id="mode_rate" class="mode mode__rate col-mobile-4 col-tablet-4 col-desktop-4 mode__active">Rate</div>
+        <div id="mode_map" class="mode mode__map col-mobile-4 col-tablet-4 col-desktop-4">Map</div>
+        <div id="mode_list" class="mode mode__list col-mobile-4 col-tablet-4 col-desktop-4">List</div>
+    </div>
+
+    <div class="wrapper__home">
+        <div class="mode--content mode__rate--content">
+            <div class="home__content">
+                <div id="home_add" class="home__add">+</div>
+                <div class="home__address"></div>
+                <div id="home_image" class="home__image">
+                    {{!-- <img src='../assets/images/home_banner.jpeg'> --}}
+                </div>
+                <div class="home__price__distance">
+                    <div class="home__price"></div>
+                    <div class="home__distance"></div>
+                </div>
+                <div class="home__rate">
+                    <div class="rate rate__dislike">
+                        <div class="minus"></div>
+                    </div>
+                    <div class="rate rate__like">
+                        <div class="favorite"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mode--content mode__map--content">
+            <div id="map" class="">
+
+            </div>
+        </div>
+
+
+        <div class="mode--content mode__list--content">
+            <div class="home__list">
+
+
+            </div>
+        </div>
+    </div>
+
+
 </div>
-{{> footer }}

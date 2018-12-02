@@ -1,0 +1,57 @@
+<div class="page home">
+
+
+
+    <div class="wrapper">
+        <div class="home__logo--M"></div>
+        <div class="container__signup--form form">
+
+
+            <div class="form__inside">
+                <div class="select__usertype">
+                    {{!-- <select name="" id="user_type">
+                        <option value="Student">Student</option>
+                        <option value="HomeOwner">HomeOwner</option>
+                    </select> --}}
+
+                    <label class="container">
+                        <input id="select_student" type="radio" checked="checked" name="radio" value="Student">Student
+                        <span class="checkmark"></span>
+                    </label>
+                    <br>
+                    <label class="container">
+                        <input id="select_homeOwner" type="radio" name="radio" value="HomeOwner">Home Owner
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+                <input type="text" id="signup_f_name" class="signup__input" placeholder="First Name" value="textF"
+                    required />
+                <input type="text" id="signup_l_name" class="signup__input" placeholder="Last Name" value="textL"
+                    required />
+                <input type="text" id="signup_email" class="signup__input" placeholder="E-mail" value="text@gmail.com"
+                    required />
+                <input type="text" id="signup_address" class="signup__input" placeholder="Address" value="textAdress"
+                    required />
+
+                <input type="text" id="signup_telefoon_nr" class="signup__input" placeholder="Tel." value="0.454811"
+                    required />
+
+                <input type="password" id="signup_password" class="signup__input" placeholder="Password" value="123456"
+                    required />
+                <input type="text" id="signup_university_name" class="signup__input" placeholder="Unversity Name" value="textUniName"
+                    required />
+                <div id="btnSignUp" class="container__form--btn--signup btn btn__Text--white">
+                    <div class="signup__text">Sign Up</div>
+                </div>
+
+                <div class="goback"><a href="/">Go Back</a></div>
+                <div id="signup_error"></div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>

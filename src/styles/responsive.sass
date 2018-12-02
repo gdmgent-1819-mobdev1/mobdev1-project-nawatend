@@ -1,0 +1,44 @@
+@mixin generateCols($suffix) 
+    $cols: 12;
+    $bw: 0;
+
+    @if $suffix=='mobile' 
+        $bw: 0;
+    
+
+    @else if $suffix=='tablet' 
+        $bw: 320;
+    
+
+    @else if $suffix=='desktop' 
+        $bw: 769;
+    
+
+    @else 
+        $bw: 1440;
+    
+
+    @media(min-width: #{$bw}px) 
+
+        @for $i from 1 through $cols 
+            .col-#{$suffix}-#{$i} 
+                float: left
+                display: block
+                width: 100%/($cols/$i)
+                box-sizing: border-box
+
+@media (max-width:768px) 
+
+    @include generateCols('mobile')
+
+
+//between
+@media (min-width:769px) and (max-width:1440px) 
+
+    @include generateCols('tablet')
+
+
+
+@media (min-width:1441px) 
+
+    @include generateCols('desktop')

@@ -1,0 +1,12 @@
+
+@mixin flexbox($justify_content,$align_items,$flexwrap)
+    display: flex
+    justify-content: $justify_content
+    align-items: $align_items
+    flex-wrap: $flexwrap
+
+
+
+
+@mixin getRestOfHeight($heightTaken)
+    height: $appHeight - $heightTaken
