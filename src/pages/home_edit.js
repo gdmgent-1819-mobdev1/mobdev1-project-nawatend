@@ -31,8 +31,9 @@ const firebase = getInstance();
 
 
 export default () => {
-  const currentHomeKey = window.location.href.split('/')[5];
-  firebase.database().ref(homesPath + currentHomeKey).once('value').then((snapshot) => {
+  const currentHomeKey = window.location.href.split('/');
+  const lastPartIndex = currentHomeKey.length - 1;
+  firebase.database().ref(homesPath + currentHomeKey[lastPartIndex]).once('value').then((snapshot) => {
     console.log(snapshot.val().description);
     const home = snapshot.val();
 

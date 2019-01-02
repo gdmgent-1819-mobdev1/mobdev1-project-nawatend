@@ -111,8 +111,6 @@ export default () => {
 
                   containerChat.appendChild(divType);
                 });
-
-                sendNotification('New Message');
               });
             });
           });
@@ -125,6 +123,7 @@ export default () => {
               selectedConversation = conversation.val();
               sendMessage(selectedConversation.fromUID, selectedConversation.toUID, messageText, selectedConversation.studentName, selectedConversation.homeownerName, localStorage.getItem('currentUserType'));
             });
+            // sendNotification('New Message');
           });
         } else {
           if (localStorage.getItem('currentUserType') === 'student') {
