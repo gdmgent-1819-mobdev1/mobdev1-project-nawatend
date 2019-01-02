@@ -31,9 +31,10 @@ const firebase = getInstance();
 
 
 export default () => {
-  const currentHomeKey = window.location.href.split('/')[5];
-  console.log(currentHomeKey);
-  firebase.database().ref(homesPath + currentHomeKey).once('value').then((snapshot) => {
+  const currentHomeKey = window.location.href.split('/');
+  const lastPartIndex = currentHomeKey.length - 1;
+  console.log(currentHomeKey[lastPartIndex]);
+  firebase.database().ref(homesPath + currentHomeKey[lastPartIndex]).once('value').then((snapshot) => {
     const home = snapshot.val();
 
     let isUserTypeStudent = false;
