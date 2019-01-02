@@ -1,8 +1,9 @@
 @import "../../node_modules/mapbox-gl/dist/mapbox-gl.css"
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css)
-@import "./colors"
-@import "./config"
-@import "./functions"
+@import "./abstracts/colors"
+@import "./abstracts/fonts"
+@import "./abstracts/config"
+@import "./functions/functions"
 // Generic styling
 body
     margin: 0
@@ -52,21 +53,20 @@ body
 // general
 
 @import "./base/custom_defaults"
-@import "./colors"
-@import "./fonts"
 
-@import "./btns"
+
+@import "./components/btns"
 
 @import "./page"
-@import "./header"
+@import "./components/header"
 
 
 // pages
-@import "./responsive"
-@import "./logo"
-@import "./start"
-@import "./register"
-@import "./home"
-@import "./home_detail"
-@import "./home_edit"
-@import "./chat"
+@import "./layout_pages/responsive"
+@import "./components/logo"
+@import "./layout_pages/start"
+@import "./layout_pages/register"
+@import "./layout_pages/home"
+@import "./layout_pages/home_detail"
+@import "./layout_pages/home_edit"
+@import "./layout_pages/chat"

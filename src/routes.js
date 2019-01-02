@@ -1,7 +1,7 @@
 // Pages
 import StartView from './pages/start';
 import RegisterView from './pages/user_register';
-import HomeView from './pages/home';
+
 import HomeStudent from './pages/home_student';
 import HomeHomeOwner from './pages/home_homeowner';
 import HomeDetailView from './pages/home_detail';
@@ -25,10 +25,6 @@ export default [{
 {
   path: '/home_detail/:homeId',
   view: HomeDetailView,
-},
-{
-  path: '/home',
-  view: HomeView,
 },
 {
   path: '/home_student',
