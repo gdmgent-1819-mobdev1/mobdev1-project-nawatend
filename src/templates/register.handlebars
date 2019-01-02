@@ -1,57 +1,51 @@
 <div class="page home">
 
+    <div class="body">
+        <div class="banner col-mobile-0 col-l-mobile-0 col-s-tablet-0 col-tablet-6 col-desktop-7"></div>
+        <div class="wrapper col-mobile-12 col-l-mobile-12  col-s-tablet-9 col-tablet-6 col-desktop-5">
+            <div class="home__logo--M"></div>
+            <div class="container__signup--form form">
 
+                <div class="form__inside col-mobile-12 col-l-mobile-12 col-tablet-12 col-desktop-12">
+                    <div id="select_usertype" class="select__usertype col-mobile-12 col-l-mobile-12 col-tablet-12 col-desktop-12">
+                        {{!-- <select name="" id="user_type">
+                            <option value="Student">Student</option>
+                            <option value="HomeOwner">HomeOwner</option>
+                        </select> --}}
 
-    <div class="wrapper">
-        <div class="home__logo--M"></div>
-        <div class="container__signup--form form">
+                        <label class="container">
+                            <input id="select_student" type="radio" checked="checked" name="radio" value="Student">Student
+                            <span class="checkmark"></span>
+                        </label>
+                        <br>
+                        <label class="container">
+                            <input id="select_homeOwner" type="radio" name="radio" value="HomeOwner">Home Owner
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
 
+                    <input type="text" id="signup_f_name" class="signup__input col-mobile-12 col-l-mobile-12  col-s-tablet-8 col-tablet-8 col-desktop-8"
+                        placeholder="First Name" value="textF" required />
+                    <input type="text" id="signup_l_name" class="signup__input col-mobile-12 col-l-mobile-12  col-s-tablet-8 col-tablet-8 col-desktop-8"
+                        placeholder="Last Name" value="textL" required />
+                    <input type="text" id="signup_email" class="signup__input col-mobile-12 col-l-mobile-12  col-s-tablet-8 col-tablet-8 col-desktop-8"
+                        placeholder="E-mail" value="t@gmail.com" required />
 
-            <div class="form__inside">
-                <div class="select__usertype">
-                    {{!-- <select name="" id="user_type">
-                        <option value="Student">Student</option>
-                        <option value="HomeOwner">HomeOwner</option>
-                    </select> --}}
+                    <input type="text" id="signup_telefoon_nr" class="signup__input col-mobile-12 col-l-mobile-12  col-s-tablet-8 col-tablet-8 col-desktop-8"
+                        placeholder="Tel." value="0488 616 789" required />
 
-                    <label class="container">
-                        <input id="select_student" type="radio" checked="checked" name="radio" value="Student">Student
-                        <span class="checkmark"></span>
-                    </label>
-                    <br>
-                    <label class="container">
-                        <input id="select_homeOwner" type="radio" name="radio" value="HomeOwner">Home Owner
-                        <span class="checkmark"></span>
-                    </label>
+                    <input type="password" id="signup_password" class="signup__input col-mobile-12 col-l-mobile-12  col-s-tablet-8 col-tablet-8 col-desktop-8"
+                        placeholder="Password" value="123456" required />
+                    <input type="text" id="signup_university_name" class="signup__input col-mobile-12 col-l-mobile-12  col-s-tablet-8  col-tablet-8 col-desktop-8"
+                        placeholder="Unversity Full Name Or Address" value="mariakerke artevelde" required />
+                    <div id="btnSignUp" class="container__form--btn--signup btn btn__Text--white ">
+                        <div class="signup__text"><i class="fas fa-user-plus"></i>Sign Up</div>
+                    </div>
+
+                    <div class="goback col-mobile-12 col-l-mobile-12 col-tablet-6 col-desktop-12"><a href="/">Go Back</a></div>
+                    <div id="signup_error"></div>
                 </div>
-
-                <input type="text" id="signup_f_name" class="signup__input" placeholder="First Name" value="textF"
-                    required />
-                <input type="text" id="signup_l_name" class="signup__input" placeholder="Last Name" value="textL"
-                    required />
-                <input type="text" id="signup_email" class="signup__input" placeholder="E-mail" value="text@gmail.com"
-                    required />
-                <input type="text" id="signup_address" class="signup__input" placeholder="Address" value="textAdress"
-                    required />
-
-                <input type="text" id="signup_telefoon_nr" class="signup__input" placeholder="Tel." value="0.454811"
-                    required />
-
-                <input type="password" id="signup_password" class="signup__input" placeholder="Password" value="123456"
-                    required />
-                <input type="text" id="signup_university_name" class="signup__input" placeholder="Unversity Name" value="textUniName"
-                    required />
-                <div id="btnSignUp" class="container__form--btn--signup btn btn__Text--white">
-                    <div class="signup__text">Sign Up</div>
-                </div>
-
-                <div class="goback"><a href="/">Go Back</a></div>
-                <div id="signup_error"></div>
             </div>
-
-
         </div>
-
     </div>
-
 </div>

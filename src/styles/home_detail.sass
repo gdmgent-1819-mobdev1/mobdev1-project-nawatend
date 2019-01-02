@@ -1,0 +1,89 @@
+.wrapper__detail
+    font-family: $main-font      
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-wrap: wrap
+    position: relative
+    height: calc(100% - 150px)
+    background-color: #fff
+    overflow-y: scroll
+.container__home--detail
+
+    padding: 2%
+    height: 96%
+    @include flexbox(center,center,wrap)
+.details__item
+    @include flexbox(center,center,wrap)
+    .details__key
+        color: $main-color
+        line-height: 30px
+        text-align: right
+        width: 150px
+    .details__value
+        color: black
+        line-height: 20px
+        text-align: left
+        width: 150px
+        margin-left: 15px
+
+
+.home__details
+    height: 100%
+    margin-top: 25px
+    
+    hr
+        width: 50%
+.home__image
+    height: 100%
+    background-image: url('../assets/images/test_room.jpg')
+    /* Full height */    
+    /* Center and scale the image nicely */
+    background-position: center
+    background-repeat: no-repeat
+    background-size: cover
+    
+
+.popup__chat
+    z-index: -2
+    position: absolute
+    top: -11px
+    left: 0px
+    background-color: $main-color
+    height: 120px
+    @include flexbox(center,center,wrap)
+    .popup__close
+        position: absolute
+        top: 0px
+        right: 5px
+        color: $error-color
+        font-size: 22px
+        font-weight: bold
+        cursor: pointer
+
+.chat__to
+    height: 20%
+    color: $secondary-color
+.chatbox
+    @include flexbox(center,center,wrap)
+    height: 70%
+
+.chat__text
+    border-radius: 10px
+    input
+        background-color: #fff
+        border-radius: 10px
+        height: 65px
+        width: 95%
+        margin: 0
+.btn__sendmessage
+    height: 70%   
+    @include flexbox(center,center,wrap)    
+    cursor: pointer
+#btnSendMessageReal
+    @include flexbox(center,center,wrap) 
+    height: 67px   
+.show__popup--chat
+    z-index: 2
+.student__control
+    position: relative

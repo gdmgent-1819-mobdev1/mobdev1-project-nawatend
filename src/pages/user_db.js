@@ -9,8 +9,8 @@ const {
 
 const {
 
-  homeOwnersPath,
-  studentsPath,
+
+  userPath,
 } = require('./path_db');
 
 const firebase = getInstance();
@@ -30,32 +30,37 @@ export default function storeUserDB(e, user, userType) {
       userId: user.uid,
       firstName: user.firstName,
       lastName: user.lastName,
-      addressCoordinate: user.addressCoordinate,
       email: user.email,
       telephoneNr: user.telephoneNr,
+      userType: user.userType,
       universityName: user.universityName,
+      universityLong: user.universityLong,
+      universityLat: user.universityLat,
     };
     const updateS = {};
-    updateS[studentsPath + user.uid] = userDataAndUserId;
+    updateS[userPath + user.uid] = userDataAndUserId;
     firebase
       .database()
       .ref()
       .update(updateS);
+    window.location.replace('#/');
+    sendNotification('Register Succeed!');
   } else {
     const userDataAndUserId = {
       userId: user.uid,
       firstName: user.firstName,
       lastName: user.lastName,
-      addressCoordinate: user.addressCoordinate,
       email: user.email,
       telephoneNr: user.telephoneNr,
+      userType: user.userType,
     };
     const updateHO = {};
-    updateHO[homeOwnersPath + user.uid] = userDataAndUserId;
+    updateHO[userPath + user.uid] = userDataAndUserId;
     firebase
       .database()
       .ref()
       .update(updateHO);
+    window.location.replace('#/');
+    sendNotification('Register Succeed!');
   }
-  sendNotification('Stored Success!');
 }

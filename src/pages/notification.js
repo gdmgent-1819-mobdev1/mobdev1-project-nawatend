@@ -10,15 +10,24 @@ export function requestNotificationPermission() {
 }
 
 // send notification
-export function sendNotification(msg) {
+export function sendNotification(msg, isNegativeMessage = false) {
   // let notif = new Notification(msg);
 
   if (Notification.permission === 'granted') {
-    const notification = new Notification('Project GoHome', {
-      icon: 'http://freeflaticons.com/wp-content/uploads/2014/09/coconut-copy-1410577237kn4g8.png',
-      body: msg,
-    });
+    if (isNegativeMessage) {
+      const notification = new Notification('Project GoHome', {
+        icon: '../src/assets/images/warning.svg',
+        body: msg,
+      });
 
-    setTimeout(notification.close.bind(notification), 5000);
+      setTimeout(notification.close.bind(notification), 4000);
+    } else {
+      const notification = new Notification('Project GoHome', {
+        icon: '../src/assets/images/confirm.svg',
+        body: msg,
+      });
+
+      setTimeout(notification.close.bind(notification), 4000);
+    }
   }
 }

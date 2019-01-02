@@ -5,20 +5,31 @@
     @if $suffix=='mobile' 
         $bw: 0;
     
+    @else if $suffix=='l-mobile'
+        $bw: 401;
+
+    @else if $suffix=='s-tablet' 
+        $bw: 761;
 
     @else if $suffix=='tablet' 
-        $bw: 320;
+        $bw: 951;
     
 
     @else if $suffix=='desktop' 
-        $bw: 769;
+        $bw: 1651;
     
 
     @else 
-        $bw: 1440;
+        $bw: 1715;
     
 
     @media(min-width: #{$bw}px) 
+        
+        .col-#{$suffix}-0
+            float: left
+            display: block
+            width: 0%
+            box-sizing: border-box
 
         @for $i from 1 through $cols 
             .col-#{$suffix}-#{$i} 
@@ -27,18 +38,57 @@
                 width: 100%/($cols/$i)
                 box-sizing: border-box
 
-@media (max-width:768px) 
-
+@media (max-width:400px) 
+    .mode__rate--content
+        height: 50%
+    .container__home--detail
+        .home__image
+            height: 45%
+            img
+                height: 100%
     @include generateCols('mobile')
-
-
+    
 //between
-@media (min-width:769px) and (max-width:1440px) 
+@media (min-width:401px) and (max-width:760px) 
+    .container__home--detail
+        .home__image
+            height: 45%
+            img
+                height: 100%
+    @include generateCols('l-mobile')
+    
 
+@media (min-width:761px) and (max-width:950px) 
+    .container__home--detail
+        .home__image
+            height: 45%
+            img
+                height: 100%
+    @include generateCols('s-tablet')
+    
+//between
+@media (min-width:951px) and (max-width:1650px) 
+    .container__home--detail
+        .home__image
+            height: 45%
+            img
+                height: 100%
     @include generateCols('tablet')
 
-
-
-@media (min-width:1441px) 
+@media (min-width:1651px) and (max-width:1714px) 
 
     @include generateCols('desktop')
+
+@media (min-width:1715px) 
+
+    @include generateCols('desktop')
+
+
+    
+.responsive
+    background-color: #fff
+    height: 50px
+
+.responsive2
+    background-color: pink
+    height: 50px

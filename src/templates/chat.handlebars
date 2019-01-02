@@ -1,0 +1,57 @@
+<div class="page home">
+    {{> header }}
+
+    <div class="modes">
+        {{#if student}}
+        <div id="go_back" class="mode col-mobile-12 col-l-mobile-5 col-s-tablet-4 col-tablet-4 col-desktop-4"><a href="#/home_student"><i
+                    class="fas fa-chevron-left"></i></a></div>
+        {{else}}
+        <div id="go_back" class="mode col-mobile-12 col-l-mobile-12 col-tablet-4 col-desktop-4 "><a href="#/home_homeowner">
+                <i class="fas fa-chevron-left"></i> </a> </div> {{/if}}
+        <div id="mode_list" class="mode mode__list col-mobile-12 col-l-mobile-7 col-s-tablet-8 col-tablet-8 col-desktop-8">Chats</div>
+    </div>
+
+    <div class="wrapper__home col-mobile-12 col-l-mobile-12 col-s-tablet-12 col-tablet-12 col-desktop-12">
+        <div class="container__conversation col-mobile-12 col-l-mobile-5 col-s-tablet-5 col-tablet-4 col-desktop-4">
+            {{#if conversations}}
+            {{#if student}}
+            {{#each conversations}}
+            <div class="conversation__item" data-conversationKey={{this.conversationKey}}>
+                <div class="from__user--time--name">
+                    <div class="from__user--name">{{this.homeownerName}}</div>
+                </div>
+                <div class="from__user--time">{{lastmessageTime this.messages}}</div>
+                <div class="user__message">Last Message: {{lastmessage this.messages}}</div>
+            </div>
+            {{/each}}
+            {{else}}
+            {{#each conversations}}
+            <div class="conversation__item" data-conversationKey={{this.conversationKey}}>
+                <div class="from__user--time--name">
+                    <div class="from__user--name">{{this.studentName}}</div>
+                </div>
+                <div class="from__user--time">{{lastmessageTime this.messages}}</div>
+                <div class="user__message">Last Message: {{lastmessage this.messages}}</div>
+            </div>
+            {{/each}}
+
+            {{/if}}
+            {{else}}
+            <div class="no__home">No Conversation For you. View Home Detail To contact</div>
+
+            {{/if}}
+        </div>
+        <div class="container__chat col-mobile-12 col-l-mobile-7 col-s-tablet-7 col-tablet-8 col-desktop-8">
+
+            <div class="chat__messages"></div>
+            {{#if conversations}}
+            <div class="message__tosend chat__text">
+                <input type="text" id="message_tosend">
+                <div id="btnSendMessage" class="button button-blue btn__sendmessage">SEND</div>
+            </div>
+            {{else}}
+            <div class="no__home">No Conversation For you. View Home Detail To contact</div>
+            {{/if}}
+        </div>
+    </div>
+</div>

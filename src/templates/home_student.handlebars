@@ -1,0 +1,201 @@
+<div class="page home">
+    {{> header }}
+
+    <div class="modes">
+        {{#if modeRate}}
+        <div id="mode_rate" class="mode mode__rate col-mobile-4 col-s-tablet-4 col-tablet-4 col-desktop-4 mode__active">Rate</div>
+        {{else}}
+        <div id="mode_rate" class="mode mode__rate col-mobile-4 col-s-tablet-4 col-tablet-4 col-desktop-4">Rate</div>
+        {{/if}}
+
+        {{#if modeMap}}
+        <div id="mode_map" class="mode mode__map col-mobile-4 col-s-tablet-4 col-tablet-4 col-desktop-4 mode__active">Map</div>
+        {{else}}
+        <div id="mode_map" class="mode mode__map col-mobile-4 col-s-tablet-4 col-tablet-4 col-desktop-4">Map</div>
+        {{/if}}
+
+        {{#if modeList}}
+        <div id="mode_list" class="mode mode__list col-mobile-4 col-s-tablet-4 col-tablet-4 col-desktop-4 mode__active">List</div>
+        {{else}}
+        <div id="mode_list" class="mode mode__list col-mobile-4 col-s-tablet-4 col-tablet-4 col-desktop-4">List</div>
+        {{/if}}
+
+        {{#if modeFavorites}}
+        <div id="mode_favorite" class="mode mode__favorite col-mobile-4 col-s-tablet-4 col-tablet-4 col-desktop-4 mode__active">Favs</div>
+        {{else}}
+        <div id="mode_favorite" class="mode mode__favorite col-mobile-4 col-s-tablet-4 col-tablet-4 col-desktop-4">Favs</div>
+        {{/if}}
+    </div>
+
+    <div class="wrapper__home col-mobile-12  col-l-mobile-12  col-s-tablet-12 col-tablet-12 col-desktop-12">
+
+        <div class="mode--content mode__rate--content col-mobile-12 col-l-mobile-12 col-s-tablet-12 col-tablet-12 col-desktop-12">
+            <div class="home__content col-mobile-12 col-l-mobile-12 col-s-tablet-12 col-tablet-12 col-desktop-12">
+                <div class="home__content col-mobile-12 col-l-mobile-12 col-s-tablet-10 col-tablet-9 col-desktop-6">
+                    <div id="rate_address" class="home__address col-mobile-12 col-l-mobile-10  col-s-tablet-11 col-tablet-9 col-desktop-8"></div>
+                    <div id="rate_image" id="home_image" class="home__image col-mobile-12 col-l-mobile-10  col-s-tablet-11 col-tablet-9 col-desktop-8">
+                        {{!-- <img src='../assets/images/home_banner.jpeg'> --}}
+                    </div>
+                    <div class="home__price__distance col-mobile-12 col-l-mobile-10  col-s-tablet-11 col-tablet-9 col-desktop-8">
+                        <div id="rate_price" class="home__price"></div>
+                        <div id="rate_distance" class="home__distance"></div>
+                        <div id="rate_size" class="home__size"></div>
+                    </div>
+                    <div id="rate_rate" class="home__rate col-mobile-12  col-l-mobile-10 col-s-tablet-11 col-tablet-9 col-desktop-8">
+                        <div id="btnViewHome" class="rate__view--home"> </div>
+                        <div id="btnDislike" class="rate rate__dislike">
+                            <div class="minus"></div>
+                        </div>
+                        <div id="btnLike" class="rate rate__like">
+                            <div class="favorite"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mode--content mode__map--content mode__remove">
+            <div id="map" class="">
+            </div>
+        </div>
+
+        <div id="mode__list--content" class="mode--content mode__list--content col-mobile-12  col-l-mobile-12 col-s-tablet-12 col-tablet-12 col-desktop-12 mode__remove">
+            <div class="home__list">
+                <div class="section__title">List your available home's</div>
+                <div class="filters col-mobile-12 col-l-mobile-12 col-s-tablet-12 col-tablet-12 col-desktop-12">
+                    <div id="btnShowFilterOptions" class="button button-orange"> <i class="fas fa-filter"></i>
+                        Show Filter Options
+                    </div>
+                </div>
+
+                {{#each homes}}
+                <div class="home__list--item col-mobile-12  col-l-mobile-12 col-s-tablet-6 col-tablet-6 col-desktop-4">
+                    <div class="home__list--item--street">{{this.addressName}}</div>
+                    <div class="home__list--item--image"><img src="{{this.imageLink}}" alt="{HOME IMAGE}" srcset=""></div>
+                    <div class="home__list--item--info--s">
+                        <div class="info__s--price">{{this.rentPrice}} EURO</div>
+                        <div class="info__s--size">{{this.size}} m²</div>
+                    </div>
+                    <div class="student__control">
+                        <div id="btnViewHome" class="btn__viewhome button button-blue" data-homeKey={{this.homeKey}}><a
+                                class="btn__viewhome" data-homeKey={{this.homeKey}} href="#/home_detail/{{this.homeKey}}"
+                                data-navigo><i class="fas fa-eye"></i>View
+                            </a>
+                        </div>
+                        <div id="btnAddFavorite" class="btn__addfavorite button button-yellow" data-homeKey={{this.homeKey}}><i
+                                class="fas fa-plus-circle"></i>Add
+                            Favorite</div>
+
+                    </div>
+                </div>
+                {{/each}}
+                {{#if homes}}
+                {{else}}
+                <div class="no__home">No Home Available. Thank you, comma again [indian accent]</div>
+                {{/if}}
+            </div>
+        </div>
+
+
+        <div id="mode__favorite--content" class="mode--content mode__favorite--content col-mobile-12 col-l-mobile-12 col-s-tablet-12 col-tablet-12 col-desktop-12 mode__remove">
+            <div class="home__list">
+                <div class="section__title">List of your favorite homes</div>
+
+                {{#each userFavoriteHomes}}
+                <div class="home__list--item col-mobile-12 col-l-mobile-12 col-s-tablet-6 col-tablet-6 col-desktop-4">
+                    <div class="home__list--item--street">{{this.addressName}}</div>
+                    <div class="home__list--item--image"><img src="{{this.imageLink}}" alt="{HOME IMAGE}" srcset=""></div>
+                    <div class="home__list--item--info--s">
+                        <div class="info__s--price">{{this.rentPrice}} EURO</div>
+                        <div class="info__s--size">{{this.size}} m²</div>
+                    </div>
+                    <div class="student__control">
+                        <div id="btnViewHome" class="btn__viewhome button button-blue" data-homeKey={{this.homeKey}}><a
+                                class="btn__viewhome" data-homeKey={{this.homeKey}} href="#/home_detail/{{this.homeKey}}"
+                                data-navigo><i class="fas fa-eye"></i>View
+                            </a></div>
+                        <div id="btnRemoveFavorite" class="btn__removefavorite button button-red" data-homeKey={{this.homeKey}}><i
+                                class="fas fa-trash"></i>Remove
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+
+                {{#if userFavoriteHomes}}
+                {{else}}
+                <div class="no__home">No Home Available. Thank you, comma again [indian accent]</div>
+                {{/if}}
+
+            </div>
+        </div>
+    </div>
+    {{!-- wrapper__home --}}
+    <div id="filter_desktop" class="filter__desktop col-mobile-12  col-l-mobile-12 col-s-tablet-6 col-tablet-6 col-desktop-4">
+        <div id="btnCloseFilterOptions" class="form__home--close">X</div>
+        <div class="filter__part">
+            <div>
+                <h4>Type</h4>
+                <div>
+                    <select name="room_type" id="filter_room_type">
+                        <option value="0">Alle</option>
+                        <option value="1">Room</option>
+                        <option value="2">Studio</option>
+                        <option value="3">Appartment</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter__part">
+            <h4>Rent Price (€)</h4>
+            <div class="filter__price">
+                <div class="filter__min">
+                    <label>Min. rent</label>
+                    <input id="filter_price_min" value='0' data-min="0" data-max="2500" data-type="price" type="number"
+                        name="price_min" placeholder="0">
+                </div>
+
+                <div class="filter__max">
+                    <label>Max. rent</label>
+                    <input class="num-input" id="filter_price_max" data-min="0" data-max="2500" data-type="price"
+                        data-range-side="max" value="2500" type="text" name="price_max" placeholder="2500">
+                </div>
+            </div>
+        </div>
+
+        <div class="filter__part">
+            <h4>Size (m2)</h4>
+            <div class="filter__size">
+                <div class="filter__min">
+                    <label>Min. Size (m2)</label>
+                    <input id="filter_size_min" data-min="0" data-max="250" data-type="size" data-range-side="min" type="text"
+                        name="size_min" placeholder="5">
+                </div>
+
+                <div class="filter__max">
+                    <label>Max. Size (m2)</label>
+                    <input id="filter_size_max" data-min="0" data-max="250" data-type="size" data-range-side="max" type="text"
+                        name="size_max" placeholder="200">
+                </div>
+            </div>
+        </div>
+
+        <div class="filter__part">
+            <h4>Distance (km)</h4>
+            <div class="filter__size">
+                <div class="filter__min">
+                    <label>Min. Distance (km)</label>
+                    <input id="filter_distance_min" data-min="0" data-max="250" data-type="distance" type="text" name="distance_min"
+                        placeholder="5">
+                </div>
+
+                <div class="filter__max">
+                    <label>Max. Distance (km)</label>
+                    <input id="filter_distance_max" data-min="0.2" data-max="30" data-type="distance" type="text" name="distance_max"
+                        placeholder="5">
+                </div>
+            </div>
+        </div>
+        <div id="btnFilterReal" class="button button-green"><a href="#/home_student">Filter</a> </div>
+    </div>
+</div>

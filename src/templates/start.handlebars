@@ -1,31 +1,30 @@
 <div class="page home">
 
   <div class="body">
-    {{!-- This is Home page.<br>
-    Go to <a href="/about" data-navigo>About page</a><br />
-    Go to <a href="/firebase" datap-navigo>Firebase example page</a><br />
-    Go to <a href="/mapbox" data-navigo>Mapbox example page</a><br />
-    Go to <a href="/testPage" data-navigo>TEST PAGE</a><br /> --}}
-
-
-
-    <div class="wrapper">
+    <div class="banner col-mobile-0 col-l-mobile-0 col-s-tablet-0 col-tablet-6 col-desktop-7 "><img src="../../src/assets/images/home_banner_bg_white.jpg"
+        alt="" srcset=""></div>
+    <div class="wrapper col-mobile-12 col-l-mobile-12  col-s-tablet-9 col-tablet-6 col-desktop-5 ">
+      <div class="home__logo--L"></div>
       <div class="form__signin">
-        <div class="home__logo--L"></div>
-
         <div id="btnSignInGoogle" class="google__signin">
         </div>
-        <input class="signin__email form__input" id="signin_email" type="text" placeholder="E-mail" value="n@gmail.com">
-        <input class="signin__password form__input" id="signin_password" type="password" placeholder="Password" value="123456">
-        <div class="signin__btn btn" id="btnSignIn">Sign In</div>
+        <input class="signin__email form__input col-mobile-12 col-l-mobile-10  col-s-tablet-8 col-tablet-8 col-desktop-8"
+          id="signin_email" type="text" placeholder="E-mail" value="n@gmail.com">
+        <input class="signin__password form__input col-mobile-12  col-l-mobile-10 col-s-tablet-8 col-tablet-8 col-desktop-8"
+          id="signin_password" type="password" placeholder="Password" value="123456">
+        <div class="form__signin_btn col-mobile-12  col-l-mobile-12 col-s-tablet-12 col-tablet-12 col-desktop-12">
+          <div class="signin__btn btn " id="btnSignIn"><i class="fas fa-sign-in"></i>Sign In</div>
+        </div>
         <div id="signin_error"></div>
-        <div class="forgot_password">Forgot Password?</div>
-
+        <div id="forgot_password" class="forgot_password"><a href="/forgot_password" data-navigo>
+            Forgot Password?</a></div>
       </div>
-      <div class="register__btn btn" id="btnRegister"><a href="/register" data-navigo> Register</a></div>
-
-      <div class="responsive col-mobile-12 col-tablet-6 col-desktop-3"></div>
-      <div class="responsive2 col-mobile-12 col-tablet-6 col-desktop-3"></div>
+      <div class="form__signin_btn col-mobile-12 col-l-mobile-12  col-s-tablet-12 col-tablet-6 col-desktop-12">
+        <div class="register__btn btn" id="btnRegister"><a href="/register" data-navigo><i class="fas fa-user-plus"></i>
+            Register</a></div>
+      </div>
+      <div id="btnGuestMode" class="guest col-mobile-12 col-l-mobile-12  col-s-tablet-12 col-tablet-12 col-desktop-12"><a
+          href="/home_guest" data-navigo>Guest? Just look</a></div>
     </div>
   </div>
 </div>

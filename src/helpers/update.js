@@ -5,4 +5,5 @@ const update = (content) => {
   app.innerHTML = content;
 };
 
+
 export default update;

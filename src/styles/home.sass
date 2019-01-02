@@ -1,74 +1,98 @@
 .wrapper__home
-    font-family: $main-font
-    width: 100%
-    @include getRestOfHeight(150)
+    font-family: $main-font      
     display: flex
     justify-content: center
     align-items: center
     flex-wrap: wrap
     position: relative
+    height: calc(100% - 150px)
+    background-color: #fff
+ 
+
+    
     
 .modes
     width: 100%
     height: 60px
-    
-.mode
-    height: 100%
     @include flexbox(center,center,wrap)
+    
+.mode  
+    width: 20%
+    height: 100%    
     background-color: rgba(5, 2, 255, .1)
     font-size: 28px
     color: $secondary-color
     cursor: pointer
+    @include flexbox(center,center,wrap)
+    transition: 0.3s width ease-in-out
+
 
 .mode__active
     background-color: #fff
-    color: $main-color
+    color: $main-color    
+    width: 40%
+    transition: 0.3s width ease-in-out
+.mode__remove
+    display: none
+    z-index: -1
+
+
 .mode__rate--content
     width: 100%
-    @include getRestOfHeight(150)
+    height: 100%
     position: absolute
     top: 0
     left: 0
 
 .mode__map--content
     width: 100%
-    @include getRestOfHeight(150)
+    height: 100%
     position: absolute
     top: 0
     left: 0
     background-color: white
-    z-index: -1
+    
 
 .mode__list--content
-    width: 100%
     position: absolute
     top: 0
-    left: 0
-    z-index: -1
+    left: 0    
+    background-color: #fff
+    height: 100%
+    overflow-y: scroll
+
+.mode__favorite--content
+    position: absolute
+    top: 0
+    left: 0    
+    background-color: #fff
+    height: 100%
+    overflow-y: scroll
+
 .home__content
-    width: 100%    
-    @include getRestOfHeight(150)
-    @include flexbox(center,center,wrap)
-    
+       
+    height: 100%
+    @include flexbox(center,center,wrap)    
     background-color: $secondary-color
 
-    .home__address
-        width: 95%
+    .home__address       
         color: black
-        height: 50px
-        background: grey
+        height: 50px        
+        font-size: 24px
+        @include flexbox(center,center,wrap)    
+        text-transform: capitalize
 
-    .home__image
-        width: 95%
-        height: 300px
+    .home__image        
+        height: 40%
         background-color: green
     .home__price__distance
-        width: 95%
+        font-size: 24px
+        @include flexbox(space-between,center,wrap)    
         height: 50px
-        background-color: lightgrey
-    .home__rate    
-        width: 95%
-        height: 260px
+      
+    .home__rate            
+        position: relative
+        height: 20%
         @include flexbox(space-between,center,wrap)
 
     .rate
@@ -77,11 +101,23 @@
         height: 100%
         @include flexbox(center,center,wrap)
         cursor: pointer
+        border-radius: 5px
 
     .rate:hover
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 3px 1px -2px rgba(0, 0, 0, 0.22), 0 1px 5px 0 rgba(0, 0, 0, 0.2)
-            
-
+    .rate__view--home
+        position: absolute
+        top: -50px
+        background-color: $main-color
+        width: 120px
+        height: 60px
+        left: calc(50% - 80px)
+        @include flexbox(center,center,wrap)
+        border: 20px solid $secondary-color
+        border-radius: 50px
+        color: $secondary-color
+        font-size: 30px
+        cursor: pointer
     .minus
         width: 60%
         background: $error-color
@@ -89,16 +125,244 @@
         border-radius: 50px
         @include flexbox(center,center,wrap)
 
-
     .favorite
         background-image: url(../assets/images/star.png)
-        width: 150px
-        height: 150px        
+        width: 70px
+        height: 70px        
         /* Center and scale the image nicely */
         background-position: center
         background-repeat: no-repeat
         background-size: cover
 
+
+        
+
+.filter__map
+    height: 80px
+    @include flexbox(space-evenly,center,wrap)
+    .select
+        width: 110px
+        height: 100px
+        @include flexbox(flex-start,flex-start,wrap)
+
+.container__ranges
+    position: absolute
+    z-index: -1
+    width: 70%
+    @include flexbox(flex-start,center,wrap)
+    background-color: #fff
+    top: 80px
+    left: 100%
+    transform: translateX(-100%)
+
+.toggle__container__ranges
+    z-index: 1
+.btn__filter   
+    height: 60px
+    width: 130px
+    border-radius: 5px
+    background-color: #ff4
+    @include flexbox(center,center,wrap)
+
+
+.filter__options
+    .options
+        @include flexbox(flex-start,center,wrap)
+        width: 200px
+    @include flexbox(space-evenly,center,wrap)
+    cursor: pointer
+
+.slider 
+    -webkit-appearance: none
+    width: 90%
+    height: 15px
+    border-radius: 5px
+    background: #d3d3d3
+    outline: none
+    opacity: 0.7
+    -webkit-transition: .2s
+    transition: opacity .5s
+
+.slider::-webkit-slider-thumb 
+    -webkit-appearance: none
+    appearance: none
+    width: 25px
+    height: 25px
+    border-radius: 50%
+    background: $main-color
+    cursor: pointer
+
+.form__home
+    opacity: 0
+    width: 100%
+    height: calc(100vh - 150px)
+    position: absolute
+    top: 0px
+    left: 0
+    background-color: white
+    z-index: -1
+    transition: 0.5s ease-in-out
+    .container__info
+        @include flexbox(space-evenly,flex-start,wrap)
+    .inputs
+        width: 45%
+        @include flexbox(flex-start,center,wrap)
+        input
+            width: 100%
+            margin: 2px
+        progress[value]::-webkit-progress-value
+            background: #4CAF50
+        #upload_progress
+            -webkit-appearance: none
+            appearance: none
+            width: 100%
+            margin-top: 5px
+    p
+        margin: 10px 0px
+    .publish__error
+        color: $error-color
+        font-size: 18px
+        font-weight: 200
+    .box__error
+        border-bottom: 2px solid $error-color
+
+.form__home--active
+    opacity: 1.0
+    z-index: 1
+    transition: 0.3s ease-out
+
+.form__home--select
+    width: 45%
+    @include flexbox(flex-start,center,wrap)
+    .select
+        width: 100%
+        p
+            font-size: 26px
+            margin: 15px 0 0px 0
+            text-align: left
+    select
+        width: 100%
+        height: 35px
+
+.form__publish__home--btn
+    background-color: $main-color
+    color: $secondary-color    
+    font-size: 28px
+    margin-top: 10px
+    width: 250px
+    height: 30px
+    padding: 10px 5px
+    cursor: pointer
+    font-size: 28px
+    display: flex
+    justify-content: center
+    align-items: center
+    border-radius: 50px
+
+
+.form__home--close
+    font-weight: bold
+    font-size: 35px
+    width: 50px
+    height: 50px
+    color: $error-color
+    position: absolute
+    top: 10px
+    left: calc(100% - 50px)
+    cursor: pointer
+
+
+
+
+//----------------- List of home
+
+.home__add   
+    margin-right: 20px
+    .fa-plus-circle
+        font-size: 24px
+        @include flexbox(center,center,wrap)
+        
+
+
+
+.mode--content
+    
+    
+
+.home__list
+    
+    position: relative
+    @include flexbox(space-evenly,flex-start,wrap)
+    height: 800px
+    
+    .section__title
+        @include title()
+    .container__title        
+        
+        width: 100%
+        @include flexbox(space-between,center,wrap)
+        .section__title
+            width: auto
+            margin: 0 0 0 20px
+
+.home__list--item
+    padding: 10px 20px
+    font-size: 20px
+    height: auto
+    .home__list--item--street
+        width: 100%
+        font-size: 22px
+        text-align: left
+        margin: 3px 0
+        text-transform: capitalize
+    .home__list--item--image
+        width: 100%
+        height: 250px        
+        background-image: url('../assets/images/test_room.jpg')
+        /* Full height */    
+        /* Center and scale the image nicely */
+        background-position: center
+        background-repeat: no-repeat
+        background-size: cover
+    .home__list--item--info--s
+        width: 100%
+        margin: 3px 0
+        @include flexbox(space-between,center,wrap)
+        .info__s--price
+        .info__s--size
+    .student__control
+        @include flexbox(flex-end,center,wrap)
+        position: relative
+    .owner__control
+        @include flexbox(flex-end,center,wrap)
+    
+        
+            
+.no__home
+    font-size: 26px
+    opacity: 0.6
+
+
+
+// ------------------------------------------------FILTER DESKTOP
+
+.filter__desktop
+    z-index: 2
+    background-color: $secondary-color
+    position: absolute
+    color: $main-color
+    width: 250px
+    top: 90px
+    left: -255px
+    height: calc(100vh - 90px)
+    @include magicBoxShadow()
+    transition: 0.4s ease-in-out
+.filter__options--show
+    left: 0
+    transition: 0.4s ease-in-out
+
+.filters    
+    @include flexbox(center,center,wrap)
 
 
     

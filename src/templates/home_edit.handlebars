@@ -1,0 +1,159 @@
+<div class="page home">
+    {{> header }}
+
+    <div class="modes">
+        {{#if isUserTypeStudent}}
+        <div id="go_back" class="mode col-mobile-12 col-l-mobile-12 col-tablet-4 col-desktop-4 mode__active"><a href="#/home_student">Go
+                Back</a></div>
+        {{else}}
+        <div id="go_back" class="mode col-mobile-12 col-l-mobile-12 col-tablet-4 col-desktop-4 mode__active"><a href="#/home_homeowner">Go
+                Back</a></div>
+        {{/if}}
+    </div>
+
+    <div class="wrapper__detail col-mobile-12 col-l-mobile-12  col-s-tablet-12 col-tablet-12 col-desktop-12">
+
+        <div class="section__title col-mobile-12 col-l-mobile-12  col-s-tablet-12 col-tablet-12 col-desktop-12">Edit
+            your home</div>
+
+
+        <div class="container__home--detail col-mobile-12 col-l-mobile-12  col-s-tablet-10 col-tablet-10 col-desktop-10">
+            <div class="home__image col-mobile-12 col-l-mobile-10  col-s-tablet-8 col-tablet-6 col-desktop-6"><img src="{{home.imageLink}}"
+                    alt="" srcset=""></div>
+
+            <div class="home__details col-mobile-12 col-l-mobile-10  col-s-tablet-8 col-tablet-6 col-desktop-6">
+                {{#if isUserTypeStudent}}
+                <div class="student__control">
+                    <div id="btnAddFavorite" class="btn__addfavorite button button-yellow" data-homeKey={{this.homeKey}}>Add
+                        Favorite</div>
+                    <div id="btnSendMessage" class="btn__viewhome button button-blue" data-homeKey={{this.homeKey}}><a
+                            class="btn__viewhome" data-homeKey={{this.homeKey}} data-homeownerUID={{this.homeownerUID}}
+                            href="#/home_detail" data-navigo>Send
+                            Message</a>
+                    </div>
+                </div>
+                {{else}}
+                <div class="owner__control">
+                    <div id="btnDelete" class="btn__delete button button-red" data-homeKey={{this.homeKey}}><a class="btn__delete--a"
+                            data-homeKey={{this.homeKey}} href="#/home_detail" data-navigo>Delete</a></div>
+                    <div id="btnEditConfirm" class="btn__editconfirm button button-green" data-homeKey={{this.homeKey}}><a
+                            class="btn__editconfirm--a" data-homeKey={{this.homeKey}} href="#/home_detail" data-navigo>Edit
+                            Confirm</a>
+                    </div>
+                </div>
+                {{/if}}
+                <div class="details__item">
+                    <div class="details__key">Address:</div>
+                    <div class="details__value"><input type="text" id="home_address" placeholder="Address" value="{{home.addressName}}" /></div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Rent/month:</div>
+                    <div class="details__value"><input type="number" id="home_price" placeholder="Price" value="{{home.rentPrice}}" /></div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Insurance price:</div>
+                    <div class="details__value"><input type="text" id="home_insurance_price" placeholder="Insurance Price"
+                            value="{{home.insurancePrice}}" /></div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Floor:</div>
+                    <div class="details__value"><input type="number" id="home_floor" placeholder="Floor" value="{{home.floor}}" /></div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Furnitured:</div>
+                    <div class="details__value"><input type="text" id="home_furnitured" placeholder="Furnitured: Yes or No"
+                            value="{{home.furnitured}}" /></div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Total rooms:</div>
+                    <div class="details__value"><input type="number" id="home_total_rooms" placeholder="Total rooms"
+                            value="{{home.totalHome}}" /></div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Total person:</div>
+                    <div class="details__value"><input type="number" id="home_max_tenant" placeholder="Max tenant"
+                            value="{{home.maxTenant}}" /></div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Room size:</div>
+                    <div class="details__value"><input type="number" id="home_size" placeholder="Size in: m²" value="{{home.size}}" /></div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Image:</div>
+                    <div class="details__value"><input type="file" id="home_image_link" name="image" />
+                        <progress value="1" max="100" id="upload_progress">0%</progress></div>
+                </div>
+                <hr>
+
+                <div class="details__item">
+                    <div class="details__key">Type:</div>
+                    <div class="details__value">
+                        <div class="select">
+                            <select name="" id="home_type">
+                                <option value="{{home.type}}">{{home.type}}</option>
+                                <option value="Room">Room</option>
+                                <option value="Studio">Studio</option>
+                                <option value="Apartment">Apartment</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Kitchen:</div>
+                    <div class="details__value"><select name="" id="home_kitchen">
+                            <option value="{{home.kitchen}}">{{home.kitchen}}</option>
+                            <option value="Private">Private</option>
+                            <option value="Shared">Shared</option>
+                            <option value="Not Available">Not Available</option>
+                        </select></div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Shower:</div>
+                    <div class="details__value"><select name="" id="home_shower">
+                            <option value="{{home.shower}}">{{home.shower}}</option>
+                            <option value="Private">Private</option>
+                            <option value="Shared">Shared</option>
+                            <option value="Not Available">Not Available</option>
+                        </select></div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Bath:</div>
+                    <div class="details__value"><select name="" id="home_bath">
+                            <option value="{{home.bath}}">{{home.bath}}</option>
+                            <option value="Private">Private</option>
+                            <option value="Shared">Shared</option>
+                            <option value="Not Available">Not Available</option>
+                        </select></div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Toilet:</div>
+                    <div class="details__value"><select name="" id="home_toilet">
+                            <option value="{{home.toilet}}">{{home.toilet}}</option>
+                            <option value="Private">Private</option>
+                            <option value="Shared">Shared</option>
+                            <option value="Not Available">Not Available</option>
+                        </select></div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Description: </div>
+                    <div class="details__value"><input type="text" id="home_description" placeholder="Description"
+                            value="{{home.description}}" /></div>
+                </div>
+                <hr>
+                <div class="details__item">
+                    <div class="details__key">Home owner:</div>
+                    <div class="details__value">{{roomOwnerInfo.firstName}} {{roomOwnerInfo.lastName}}</div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Telephone:</div>
+                    <div class="details__value">{{roomOwnerInfo.telephoneNr}}</div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">E-mail:</div>
+                    <div class="details__value">{{roomOwnerInfo.email}}</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

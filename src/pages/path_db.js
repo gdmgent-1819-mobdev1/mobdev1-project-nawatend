@@ -1,3 +1,5 @@
-export const studentsPath = '/users/students/';
-export const homeOwnersPath = '/users/homeowners/';
+export const userPath = '/users/';
+export const userFavorites = '/userfavorites/';
 export const homesPath = '/homes/';
+export const homesSortedPath = '/homessorted/';
+export const conversationsPath = '/conversations/';

@@ -1,0 +1,70 @@
+.container__conversation
+    position: relative   
+    height: 100%
+    overflow-y: scroll
+    .conversation__item
+        overflow: hidden        
+        height: 15%
+        cursor: pointer
+        @include magicBoxShadow()
+        .from__user--name
+            color: $main-color
+            font-size: 18px
+            text-align: left
+            margin: 10px
+        .from__user--time
+            opacity: 0.5
+            color: black
+            font-size: 14px
+            text-align: left
+            margin: 10px
+            margin-top: 1px
+
+        .user__message
+            text-align: left
+            margin-left: 15px
+    .conversation__item:hover
+        background-color: rgba(95, 156, 213, 0.3)
+    .active__conversation
+        background-color: rgba(95, 156, 213, 0.3)
+
+.from__user--time--name
+    @include flexbox(space-between,center,wrap)
+            
+.container__conversation::-webkit-scrollbar
+    width: 10px
+    border-radius: 10px
+    
+        
+
+.container__chat
+    background-color: rgba(95, 156, 213, 0.3)
+    height: 100%
+    overflow-y: scroll
+    padding: 10px
+    .float__right
+        @include flexbox(flex-end,center,wrap)
+        margin-top: 5px
+        margin-bottom: 5px
+    .float__left
+        @include flexbox(flex-start,center,wrap)
+        margin-top: 5px
+        margin-bottom: 5px
+    .message__student        
+        display: inline-block
+        background-color: $main-color
+        color: $secondary-color
+        padding: 5px
+        border-radius: 25px
+    .message__homeowner                
+        background-color: lightblue
+        display: inline-block
+        padding: 5px
+        border-radius: 25px
+
+.container__chat::-webkit-scrollbar
+    width: 10px
+    border-radius: 10px
+
+.modes
+    

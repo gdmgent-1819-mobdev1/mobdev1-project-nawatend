@@ -1,18 +1,19 @@
 @import "../../node_modules/mapbox-gl/dist/mapbox-gl.css"
-
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css)
+@import "./colors"
 @import "./config"
 @import "./functions"
 // Generic styling
 body
-    font-size: 18px
-    margin: 0 auto
+    margin: 0
     background: #fefefe
     height: 100vh
+    width: 100vw
     display: flex
     justify-content: center
     flex-wrap: wrap
     align-items: center
-    background-image: url('../assets/images/bg_desktop.png')
+    background-image: url('../assets/images/bg.svg')
     /* Full height */
     
     /* Center and scale the image nicely */
@@ -20,45 +21,52 @@ body
     background-repeat: no-repeat
     background-size: cover
     
-    #app
-        width: $appWidth
-        height: $appHeight
-        position: relative
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2)
-        
+    
+
+    .body
         display: flex
         justify-content: center
+        flex-wrap: wrap
+        align-items: center
+        width: 100%
+        height: 100%
+    #app
+        
+        height: $appHeight
+        position: relative
+        //box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2)
+        display: flex
+        justify-content: center
+        overflow-x: hidden
        
     #map
         top: 0
         bottom: 0
-        width: 100%
-        @include getRestOfHeight(230)
+        width: 100%        
+        height: 100vh
         text-align: initial
         margin: 0 auto
 
-a
-    text-decoration: none
-
 
     
-
-
 // general
 
-
+@import "./base/custom_defaults"
 @import "./colors"
 @import "./fonts"
 
+@import "./btns"
+
 @import "./page"
 @import "./header"
-@import "./footer"
+
 
 // pages
 @import "./responsive"
-@import "./about"
 @import "./logo"
 @import "./start"
 @import "./register"
 @import "./home"
-
+@import "./home_detail"
+@import "./home_edit"
+@import "./chat"

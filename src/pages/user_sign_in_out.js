@@ -1,12 +1,7 @@
-// // sigining in
-// import {
-//   compile,
-// } from 'handlebars';
-// // Import the update helper
-// import Navigo from 'navigo';
-// import update from '../helpers/update';
 import status from './status';
-import Home from './home';
+
+// import HomeStudent from './home_student';
+// import HomeHomeOwner from './home_homeowner';
 
 const {
   getInstance,
@@ -38,15 +33,42 @@ export function signIn(e) {
       // router.navigate('/home.js');
 
       status.statusSignIn = true;
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          status.currentUserUid = user.uid;
 
-      Home();
-      console.log(`${response.user.uid} statusSignIn: ${status.statusSignIn}`);
+          // User is signed in.
+          const database = firebase.database().ref(`users/${user.uid}`);
+          database.on('value', (snapshot) => {
+            // const homes = snapshot.val();
+            // Run the update helper to update the template
+            const userInfo = snapshot.val();
+            status.userType = userInfo.userType;
+            localStorage.setItem('currentUserType', userInfo.userType);
+
+            if (localStorage.getItem('currentUserType') === 'student') {
+              window.location.replace('#/home_student');
+              // HomeStudent();
+            } else {
+              window.location.replace('#/home_homeowner');
+              // HomeHomeOwner();
+            }
+            console.log(userInfo.userType);
+          });
+        } else {
+          // No user is signed in.
+          console.log('NOT LOGGED IN!');
+        }
+      });
+
+
+      console.log(`User uid: ${response.user.uid} statusSignIn: ${status.statusSignIn}`);
     })
     .catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
-      const errorMessage = error.message;
       document.getElementById('signin_error').innerHTML = `${errorCode} - ${error}`;
+      sendNotification('Failed To Sign In', true);
     });
 }
 
@@ -58,6 +80,7 @@ export function signOut() {
       () => {
         sendNotification('You are sign out!');
         document.getElementById('signin_password').value = '';
+        localStorage.setItem('signInStatus', false);
       },
       (error) => {
         console.error('Sign Out Error', error);
@@ -105,6 +128,7 @@ export function forgottenPasswordHandle(email) {
     .sendPasswordResetEmail(email)
     .then(() => {
       sendNotification('Password Recovery: Check E-mail');
+      document.getElementById('signin_error').innerHTML = '';
     })
     .catch((error) => {
       // Handle Errors here.
@@ -116,18 +140,7 @@ export function forgottenPasswordHandle(email) {
 }
 
 
-// export default () => {
-//   update(compile(signedInTemplate)());
+// export function checkIfUserIsStudent(){
 
-//   const btnSignIn = document.getElementById('btnSignIn');
-//   const btnSignInGoogle = document.getElementById('btnSignInGoogle');
 
-//   btnSignIn.addEventListener('click', (e) => {
-//     signIn(e);
-//     console.log('signin clicked');
-//   }, false);
-
-//   btnSignInGoogle.addEventListener('click', (e) => {
-//     signInGoogle(e);
-//   }, false);
-// };
+// }

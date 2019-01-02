@@ -1,0 +1,105 @@
+<div class="page home">
+    {{> header }}
+
+    <div class="modes">
+        <div id="mode_rate" class="mode mode__rate col-mobile-4 col-tablet-4 col-desktop-4 mode__active">Rate</div>
+        <div id="mode_map" class="mode mode__map col-mobile-4 col-tablet-4 col-desktop-4">Map</div>
+        <div id="mode_list" class="mode mode__list col-mobile-4 col-tablet-4 col-desktop-4">List</div>
+    </div>
+
+    <div class="wrapper__home">
+
+
+
+        <div id="mode__list--content" class="mode--content mode__list--content">
+
+            <div class="home__list">
+                <div class="section__title">List your available home's</div>
+                {{#each homes}}
+                <div class="home__list--item">
+                    <div class="home__list--item--street">{{this.addressCoordinate}} , 9000 Gent</div>
+                    <div class="home__list--item--image">{{this.addressCoordinate}}</div>
+                    <div class="home__list--item--info--s">
+                        <div class="info__s--price">{{this.rentPrice}} EURO</div>
+                        <div class="info__s--size">{{this.size}} m²</div>
+                    </div>
+                    <div class="student__control">
+                        <div id="btnAddFavorite" class="btn__addfavorite button button-yellow">Add Favorite</div>
+                        <div id="btnViewHome" class="btn__viewhome button button-blue">View Home</div>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                {{/each}}
+
+            </div>
+
+            <div class="filter__desktop">
+                <div class="filter__part">
+                    <div>
+                        <h4>Type</h4>
+                        <div>
+                            <select name="room_type">
+                                <option value="0">Alle</option>
+                                <option value="1">Room</option>
+                                <option value="2">Studio</option>
+                                <option value="3">Appartement</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter__part">
+                    <h4>Rent Price (€)</h4>
+                    <div class="filter__price">
+                        <div class="filter__min">
+                            <label>Min. rent</label>
+                            <input id="price_min" data-min="0" data-max="2500" data-type="price" type="number" name="price_min"
+                                placeholder="0">
+                        </div>
+
+                        <div class="filter__max">
+                            <label>Max. rent</label>
+                            <input class="num-input" id="price_max" data-min="0" data-max="2500" data-type="price"
+                                data-range-side="max" type="text" name="price_max" placeholder="2500">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter__part">
+                    <h4>Size (m2)</h4>
+                    <div class="filter__size">
+                        <div class="filter__min">
+                            <label>Min. Size (m2)</label>
+                            <input id="size_min" data-min="0" data-max="250" data-type="size" data-range-side="min"
+                                type="text" name="size_min" placeholder="5">
+                        </div>
+
+                        <div class="filter__max">
+                            <label>Max. Size (m2)</label>
+                            <input id="size_max" data-min="0" data-max="250" data-type="size" data-range-side="max"
+                                type="text" name="size_max" placeholder="200">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter__part">
+                    <h4>Distance (km)</h4>
+                    <div class="filter__size">
+                        <div class="filter__min">
+                            <label>Min. Distance (km)</label>
+                            <input id="distance_min" data-min="0" data-max="250" data-type="distance" type="text" name="distance_min"
+                                placeholder="5">
+                        </div>
+
+                        <div class="filter__max">
+                            <label>Max. Distance (km)</label>
+                            <input id="distance_max" data-min="0.2" data-max="30" data-type="distance" type="text" name="distance_max"
+                                placeholder="5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,8 +8,10 @@ import {
   signIn,
   signInGoogle,
 } from './user_sign_in_out';
+import {
+  requestNotificationPermission,
+} from './notification';
 
-import Home from './home';
 // Import the template to use
 const startTemplate = require('../templates/start.handlebars');
 
@@ -21,15 +23,26 @@ export default () => {
     user,
   }));
 
-
+  requestNotificationPermission();
   const btnSignIn = document.getElementById('btnSignIn');
   const btnSignInGoogle = document.getElementById('btnSignInGoogle');
+  const btnForgotPassword = document.getElementById('forgot_password');
+  const btnGuestMode = document.getElementById('btnGuestMode');
+
+  btnGuestMode.addEventListener('click', () => {
+    localStorage.setItem('guest', true);
+  });
 
   btnSignIn.addEventListener('click', (e) => {
     signIn(e);
-
-
     console.log('signin clicked');
+    // prepare first to display
+    localStorage.setItem('modeRate', true);
+    localStorage.setItem('modeMap', false);
+    localStorage.setItem('modeList', false);
+    localStorage.setItem('modeFavorites', false);
+    localStorage.setItem('filtered', false);
+    localStorage.setItem('guest', false);
   }, false);
 
   btnSignInGoogle.addEventListener('click', (e) => {

@@ -1,0 +1,167 @@
+<div class="page home">
+    {{> header }}
+
+    <div class="modes">
+        {{#if isGuest}}
+        <div id="go_back" class="mode col-mobile-12 col-l-mobile-12 col-tablet-4 col-desktop-4 "><a href="#/home_guest"><i
+                    class="fas fa-chevron-left"></i></a></div>
+        {{else}}
+        {{#if isUserTypeStudent}}
+        <div id="go_back" class="mode col-mobile-12 col-l-mobile-12 col-tablet-4 col-desktop-4 "><a href="#/home_student"><i
+                    class="fas fa-chevron-left"></i></a></div>
+        {{else}}
+        <div id="go_back" class="mode col-mobile-12 col-l-mobile-12 col-tablet-4 col-desktop-4 "><a href="#/home_homeowner">
+                <i class="fas fa-chevron-left"></i> </a>
+        </div>
+        {{/if}}
+        {{/if}}
+    </div>
+    <div class="wrapper__detail col-mobile-12 col-l-mobile-12  col-s-tablet-12 col-tablet-12 col-desktop-12">
+
+        <div class="container__home--detail col-mobile-12 col-l-mobile-12  col-s-tablet-10 col-tablet-10 col-desktop-10">
+            <div class="col-mobile-12 col-l-mobile-12 col-s-tablet-12 col-tablet-12 col-desktop-12">
+                <div id="btnShareOnFB" class="button button-blue"><i class="fab fa-facebook-square"></i>Share</div>
+            </div>
+            <div class="home__image col-mobile-12 col-l-mobile-10  col-s-tablet-8 col-tablet-6 col-desktop-6"><img src="{{home.imageLink}}"
+                    alt="" srcset=""></div>
+
+            <div class="home__details col-mobile-12 col-l-mobile-10  col-s-tablet-8 col-tablet-6 col-desktop-6">
+
+                {{#if isGuest}}
+                <div class="button button-blue"><a href="#/register" data-navigo> <i class="fas fa-user-plus"></i>
+                        Register</a>
+                </div>
+                {{else}}
+                {{#if isUserTypeStudent}}
+                <div class="student__control">
+
+                    <div id="popup_chat" class="popup__chat col-mobile-12 col-l-mobile-12  col-s-tablet-12 col-tablet-12 col-desktop-12">
+                        <div id="btnClosePopup" class="popup__close">X</div>
+                        <div class="chat__to col-mobile-12 col-l-mobile-12  col-s-tablet-12 col-tablet-12 col-desktop-12">To:
+                            {{roomOwnerInfo.firstName}} {{roomOwnerInfo.lastName}}
+                        </div>
+
+                        <div class="chatbox col-mobile-12 col-l-mobile-12  col-s-tablet-12 col-tablet-12 col-desktop-12">
+                            <div class="chat__text col-mobile-8 col-l-mobile-8  col-s-tablet-8 col-tablet-8 col-desktop-8"><input
+                                    type="text" id="chat_text" placeholder="Your message"></div>
+
+                            <div id="btnSendMessageReal" class="button button-green col-mobile-3 col-l-mobile-3  col-s-tablet-3 col-tablet-3 col-desktop-3"
+                                data-homeownerUID={{home.homeownerUID}}><i class="fas fa-envelope"></i>Send
+                            </div>
+                        </div>
+                    </div>
+                    <div id="btnAddFavorite" class="btn__addfavorite button button-yellow" data-homeKey={{home.homeKey}}><i
+                            class="fas fa-plus-circle"></i>Add
+                        Favorite</div>
+                    <div id="btnSendMessage" class="btn__viewhome button button-blue" data-homeKey={{home.homeKey}}><a
+                            class="btn__viewhome" data-homeKey={{home.homeKey}} data-homeownerUID={{home.homeownerUID}}
+                            data-navigo>Send
+                            Message</a>
+                    </div>
+                </div>
+                {{else}}
+                <div class="owner__control">
+                    <div id="btnEdit" class="btn__edit button button-yellow" data-homeKey={{home.homeKey}}><a class="btn__edithome"
+                            data-homeKey={{home.homeKey}} href="#/home_edit/{{home.homeKey}}" data-navigo><i class="fas fa-edit"></i>Edit
+                        </a></div>
+                    <div id="btnViewHome" class="btn__delete button button-red" data-homeKey={{home.homeKey}}><a class="btn__delete"
+                            data-homeKey={{home.homeKey}} data-navigo><i class="fas fa-trash"></i>Delete
+                        </a>
+                    </div>
+                </div>
+                {{/if}}
+
+                {{/if}}
+
+
+
+                <div class="details__item">
+                    <div class="details__key">Address:</div>
+                    <div class="details__value">{{home.addressName}}</div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Rent/month:</div>
+                    <div class="details__value">{{home.rentPrice}}</div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Insurance price:</div>
+                    <div class="details__value">{{home.insurancePrice}}</div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Floor:</div>
+                    <div class="details__value">{{home.floor}}</div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Furnitured:</div>
+                    <div class="details__value">{{home.furnitured}}</div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Total rooms:</div>
+                    <div class="details__value">{{home.totalHome}}</div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Total person:</div>
+                    <div class="details__value">{{home.maxTenant}}</div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Room size:</div>
+                    <div class="details__value">{{home.size}}</div>
+                </div>
+
+                <div class="details__item">
+                    <div class="details__key">Description:</div>
+                    <div class="details__value">{{home.description}}</div>
+                </div>
+                <hr>
+                <div class="details__item">
+                    <div class="details__key">Type:</div>
+                    <div class="details__value">{{home.type}}</div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Kitchen:</div>
+                    <div class="details__value">{{home.kitchen}}</div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Shower:</div>
+                    <div class="details__value">{{home.shower}}</div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Bath:</div>
+                    <div class="details__value">{{home.bath}}</div>
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Toilet:</div>
+                    <div class="details__value">{{home.toilet}}</div>
+                </div>
+                <hr>
+                <div class="details__item">
+                    <div class="details__key">Home owner:</div>
+                    {{#if isGuest}}
+                    <div class="details__value">Register To See</div>
+                    {{else}}
+                    <div class="details__value">{{roomOwnerInfo.firstName}} {{roomOwnerInfo.lastName}}</div>
+                    {{/if}}
+                </div>
+                <div class="details__item">
+                    <div class="details__key">Telephone:</div>
+                    {{#if isGuest}}
+                    <div class="details__value">Register To See</div>
+                    {{else}}
+                    <div class="details__value">{{roomOwnerInfo.telephoneNr}}</div>
+                    {{/if}}
+
+                </div>
+                <div class="details__item">
+                    <div class="details__key">E-mail:</div>
+                    {{#if isGuest}}
+                    <div class="details__value">Register To See</div>
+                    {{else}}
+                    <div class="details__value">{{roomOwnerInfo.email}}</div>
+                    {{/if}}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

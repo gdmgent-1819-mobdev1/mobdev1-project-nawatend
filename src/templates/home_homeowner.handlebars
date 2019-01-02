@@ -1,0 +1,222 @@
+<div class="page home">
+    {{> header }}
+
+    <div class="modes">
+        <div id="mode_list" class="mode mode__list col-mobile-4 col-tablet-4 col-desktop-4">List</div>
+    </div>
+
+    <div class="wrapper__home col-mobile-12 col-l-mobile-12 col-s-tablet-12 col-tablet-12 col-desktop-12">
+
+        <div id="mode__list--content" class="mode--content mode__list--content col-mobile-12 col-l-mobile-12 col-s-tablet-12 col-tablet-12 col-desktop-12">
+
+            <div class="container__title">
+                <div class="section__title">List of your Home's</div>
+                <div id="home_add" class="button button-green home__add"><i class="fas fa-plus-circle"></i>Add New
+                    Home</div>
+            </div>
+            {{#if homesArr}}
+            {{#each homesArr}}
+            <div class="home__list--item col-mobile-12  col-l-mobile-12 col-s-tablet-6 col-tablet-6 col-desktop-4">
+                <div class="home__list--item--street">{{this.addressName}}</div>
+                <div class="home__list--item--image"><img src="{{this.imageLink}}" alt="{HOME IMAGE}" srcset=""></div>
+                <div class="home__list--item--info--s">
+                    <div class="info__s--price">{{this.rentPrice}} EURO</div>
+                    <div class="info__s--size">{{this.size}} m²</div>
+                </div>
+                <div class="owner__control">
+                    <div id="btnViewHome" class="btn__viewhome button button-blue"><a class="btn__viewhomeReal"
+                            data-homeKey={{this.homeKey}} href="#/home_detail/{{this.homeKey}}" data-navigo><i class="fas fa-eye"></i>View
+                        </a>
+                    </div>
+                    <div id="btnEdit" class="btn__edit button button-yellow" data-homeKey={{this.homeKey}}><a class="btn__edithome"
+                            data-homeKey={{this.homeKey}} href="#/home_edit/{{this.homeKey}}" data-navigo><i class="fas fa-edit"></i>Edit
+                        </a></div>
+                    <div id="btnDelete" class="btn__delete button button-red"><a class="btn__delete" data-homeKey={{this.homeKey}}
+                            data-navigo><i class="fas fa-trash"></i>Delete
+                        </a></div>
+                </div>
+            </div>
+            {{/each}}
+
+            {{else}}
+
+
+            <div class="no__home">No Home For you. Please Add New Home</div>
+
+            {{/if}}
+
+
+        </div>
+        {{!-- add new home --}}
+        <div id="form_home" class="form__home">
+            <div id="btnCloseFormHome" class="form__home--close">X</div>
+            <p class="text__title--bold--blue">Upload a new Home</p>
+            <div class="container__info">
+                <div class="inputs">
+                    <input type="text" id="home_address" placeholder="Address" value="Wondelgemstraat 104" />
+                    <input type="number" id="home_price" placeholder="Price" value="500" />
+                    <input type="text" id="home_insurance_price" placeholder="Insurance Price" value="1000" />
+                    <input type="text" id="home_description" placeholder="Description" value="some random text" />
+                    <input type="number" id="home_floor" placeholder="Floor" value="2" />
+                    <input type="number" id="home_max_tenant" placeholder="Max tenant" value="1" />
+                    <input type="text" id="home_furnitured" placeholder="Furnitured: Yes or No" value="Yes" />
+                    <input type="file" id="home_image_link" name="image" />
+                    <progress value="0" max="100" id="upload_progress">0%</progress>
+                    <input type="number" id="home_total_rooms" placeholder="Total rooms" value="5" />
+                    <input type="number" id="home_size" placeholder="Size in: m²" value="10" />
+                </div>
+                <div class="form__home--select">
+                    <div class="select">
+                        <p>Toilet</p>
+                        <select name="" id="home_toilet">
+                            <option value="Private">Private</option>
+                            <option value="Shared">Shared</option>
+                            <option value="Not Available">Not Available</option>
+                        </select>
+                    </div>
+                    <div class="select">
+                        <p>Shower</p>
+                        <select name="" id="home_shower">
+                            <option value="Private">Private</option>
+                            <option value="Shared">Shared</option>
+                            <option value="Not Available">Not Available</option>
+                        </select>
+                    </div>
+                    <div class="select">
+                        <p>Bath</p>
+                        <select name="" id="home_bath">
+                            <option value="Private">Private</option>
+                            <option value="Shared">Shared</option>
+                            <option value="Not Available">Not Available</option>
+                        </select>
+                    </div>
+
+                    <div class="select">
+                        <p>Kitchen</p>
+                        <select name="" id="home_kitchen">
+                            <option value="Private">Private</option>
+                            <option value="Shared">Shared</option>
+                            <option value="Nothing">Not Available</option>
+                        </select>
+                    </div>
+                    <div class="select">
+                        <p>Type</p>
+                        <select name="" id="home_type">
+                            <option value="Room">Room</option>
+                            <option value="Studio">Studio</option>
+                            <option value="Appartment">Apartment</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-mobile-12 col-l-mobile-12 col-s-tablet-12 col-tablet-12 col-desktop-12">
+                    <div id="btnPublishHome" class="button button-blue"><i class="fas fa-upload"></i>
+                        Publish Home
+                    </div>
+                </div>
+                <div id="publish_error" class="publish__error col-mobile-12 col-l-mobile-12 col-s-tablet-12 col-tablet-12 col-desktop-12"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- <div class="btns col-mobile-12 col-l-mobile-12  col-tablet-12 col-desktop-12">
+    <a class="button">
+        <i class="fa fa-cloud-download"></i>
+        <strong>Download</strong>
+    </a>
+    <a class="button button-yellow">
+        <i class="fa fa-clock-o"></i>
+        Waiting for <strong>confirmation</strong>
+    </a>
+    <a class="button button-orange">
+        <i class="fa fa-exclamation-triangle"></i>
+        Watch <strong>out!</strong>
+    </a>
+    <a class="button button-red">
+        <i class="fa fa-times"></i>
+        Order <strong>cancelled</strong>
+    </a>
+    <a class="button button-purple">
+        <i class="fa fa-rocket"></i>
+        Fly me to the <strong>Moon</strong>
+    </a>
+    <a class="button button-blue">
+        <i class="fa fa-globe"></i>
+        Hello <strong>World</strong>
+    </a>
+    <a class="button button-green">
+        <i class="fa fa-check"></i>
+        Order <strong>received</strong>
+    </a>
+</div>
+<div class="filter__desktop">
+
+    <div class="filter__part">
+        <div>
+            <h4>Type</h4>
+            <div>
+                <select name="room_type">
+                    <option value="0">Alle</option>
+                    <option value="1">Room</option>
+                    <option value="2">Studio</option>
+                    <option value="3">Appartement</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter__part">
+        <h4>Rent Price (€)</h4>
+        <div class="filter__price">
+            <div class="filter__min">
+                <label>Min. rent</label>
+                <input id="price_min" data-min="0" data-max="2500" data-type="price" type="number" name="price_min"
+                    placeholder="0">
+            </div>
+
+            <div class="filter__max">
+                <label>Max. rent</label>
+                <input class="num-input" id="price_max" data-min="0" data-max="2500" data-type="price" data-range-side="max"
+                    type="text" name="price_max" placeholder="2500">
+            </div>
+        </div>
+    </div>
+
+    <div class="filter__part">
+        <h4>Size (m2)</h4>
+        <div class="filter__size">
+            <div class="filter__min">
+                <label>Min. Size (m2)</label>
+                <input id="size_min" data-min="0" data-max="250" data-type="size" data-range-side="min" type="text"
+                    name="size_min" placeholder="5">
+            </div>
+
+            <div class="filter__max">
+                <label>Max. Size (m2)</label>
+                <input id="size_max" data-min="0" data-max="250" data-type="size" data-range-side="max" type="text"
+                    name="size_max" placeholder="200">
+            </div>
+        </div>
+    </div>
+
+    <div class="filter__part">
+        <h4>Distance (km)</h4>
+        <div class="filter__size">
+            <div class="filter__min">
+                <label>Min. Distance (km)</label>
+                <input id="distance_min" data-min="0" data-max="250" data-type="distance" type="text" name="distance_min"
+                    placeholder="5">
+            </div>
+
+            <div class="filter__max">
+                <label>Max. Distance (km)</label>
+                <input id="distance_max" data-min="0.2" data-max="30" data-type="distance" type="text" name="distance_max"
+                    placeholder="5">
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</div>
+</div> --}}
