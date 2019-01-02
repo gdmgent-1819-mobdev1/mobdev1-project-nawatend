@@ -6,11 +6,9 @@ import {
 import update from '../helpers/update';
 import header from '../helpers/header';
 
-// Only import the compile function from handlebars instead of the entire library
 
-import status from './status';
 import {
-  userPath,
+
   conversationsPath,
 } from './path_db';
 import {
@@ -19,6 +17,9 @@ import {
 import {
   sendMessage,
 } from '../helpers/message_handle';
+import {
+  sendNotification,
+} from './notification';
 
 const chatTemplate = require('../templates/chat.handlebars');
 
@@ -110,6 +111,8 @@ export default () => {
 
                   containerChat.appendChild(divType);
                 });
+
+                sendNotification('New Message');
               });
             });
           });

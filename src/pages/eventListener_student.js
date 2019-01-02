@@ -12,16 +12,10 @@ import {
 import config from '../config';
 import status from './status';
 import {
-  userPath,
-  userFavorites,
-  homesPath,
+
   homesSortedPath,
 } from './path_db';
 
-import {
-  objectToArray,
-  getValueOfElementById,
-} from '../helpers/cool_functions';
 
 import {
   filterAll,
@@ -35,10 +29,6 @@ const {
 
 const firebase = getInstance();
 
-
-// const distance = getDistance(localStorage.getItem('currentStudentLat'), localStorage.getItem('currentStudentLong'),
-// oneHome.val().latitude, oneHome.val().longtidute, 'K');
-// firebase.database().ref(`${homesPath + oneHome.val().homeKey}/distanceFromStudent`).set(distance);
 
 function initMap(homes) {
   if (config.mapBoxToken) {
@@ -56,7 +46,7 @@ function initMap(homes) {
       const popUp = new mapboxgl.Popup({
         offset: 25,
       });
-      popUp.setText(home.addressName);
+      popUp.setText(`${home.addressName} : ${home.rentPrice} EUR`);
 
       new mapboxgl.Marker()
         .setLngLat([home.longtidute, home.latitude])

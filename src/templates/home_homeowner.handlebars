@@ -53,17 +53,20 @@
             <p class="text__title--bold--blue">Upload a new Home</p>
             <div class="container__info">
                 <div class="inputs">
-                    <input type="text" id="home_address" placeholder="Address" value="Wondelgemstraat 104" />
-                    <input type="number" id="home_price" placeholder="Price" value="500" />
-                    <input type="text" id="home_insurance_price" placeholder="Insurance Price" value="1000" />
-                    <input type="text" id="home_description" placeholder="Description" value="some random text" />
-                    <input type="number" id="home_floor" placeholder="Floor" value="2" />
-                    <input type="number" id="home_max_tenant" placeholder="Max tenant" value="1" />
-                    <input type="text" id="home_furnitured" placeholder="Furnitured: Yes or No" value="Yes" />
+                    <input type="text" id="home_address" placeholder="Address In Gent" value="" />
+                    <input type="number"  min="0" max="2500" id="home_price" placeholder="Price: min 0 EUR - max 2500 EUR"
+                        value="" />
+                    <input type="text" id="home_insurance_price" placeholder="Insurance Price" value="" />
+                    <input type="text" id="home_description" placeholder="Description" value="" />
+                    <input type="number" id="home_floor" placeholder="Floor" value="" />
+                    <input type="number" id="home_max_tenant" placeholder="Max tenant" value="" />
+                    <input type="text" id="home_furnitured" placeholder="Furnitured: Yes or No + more info" value="" />
                     <input type="file" id="home_image_link" name="image" />
                     <progress value="0" max="100" id="upload_progress">0%</progress>
-                    <input type="number" id="home_total_rooms" placeholder="Total rooms" value="5" />
-                    <input type="number" id="home_size" placeholder="Size in: m²" value="10" />
+                    <input type="number" min="1" max="15" id="home_total_rooms" placeholder="Total rooms: min 1 - max 15"
+                        value="" />
+                    <input type="number" min="0" max="250" id="home_size" placeholder="Size in:  min 0m²- max 250m²"
+                        value="" />
                 </div>
                 <div class="form__home--select">
                     <div class="select">
@@ -108,9 +111,11 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-mobile-12 col-l-mobile-12 col-s-tablet-12 col-tablet-12 col-desktop-12">
+                <div class="col-mobile-7 col-l-mobile-6 col-s-tablet-4 col-tablet-2 col-desktop-2">
                     <div id="btnPublishHome" class="button button-blue"><i class="fas fa-upload"></i>
-                        Publish Home
+
+                        <input type="submit" value="Publish Home" />
+
                     </div>
                 </div>
                 <div id="publish_error" class="publish__error col-mobile-12 col-l-mobile-12 col-s-tablet-12 col-tablet-12 col-desktop-12"></div>

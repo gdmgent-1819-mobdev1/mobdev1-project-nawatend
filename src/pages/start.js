@@ -26,7 +26,7 @@ export default () => {
   requestNotificationPermission();
   const btnSignIn = document.getElementById('btnSignIn');
   const btnSignInGoogle = document.getElementById('btnSignInGoogle');
-  const btnForgotPassword = document.getElementById('forgot_password');
+  // const btnForgotPassword = document.getElementById('forgot_password');
   const btnGuestMode = document.getElementById('btnGuestMode');
 
   btnGuestMode.addEventListener('click', () => {

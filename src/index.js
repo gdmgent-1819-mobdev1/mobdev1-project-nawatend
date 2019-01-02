@@ -12,15 +12,11 @@ import {
 const header = require('./partials/header.handlebars');
 const footer = require('./partials/footer.handlebars');
 
-const chatBox = require('./partials/chat_box.handlebars');
 
 // Register the partial components
 handlebars.registerPartial('header', compile(header)({}));
 handlebars.registerPartial('footer', compile(footer)({
   text: 'Template made with love by GDM Ghent',
-}));
-handlebars.registerPartial('chatBox', compile(chatBox)({
-  title: 'Chat box',
 }));
 
 handlebars.registerHelper('lastmessage', (object) => {

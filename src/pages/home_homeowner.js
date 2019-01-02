@@ -49,7 +49,7 @@ export default () => {
       firebase.database().ref(userPath + user.uid).on('value', (userInfo) => {
         localStorage.setItem('currentUserName', `${userInfo.val().firstName} ${userInfo.val().lastName}`);
       });
-      localStorage.setItem('currentUserType', false);
+      localStorage.setItem('currentUserType', 'homeOwner');
       let homesArr = [];
       const database = firebase.database().ref(homesPath);
       database.on('value', (snapshot) => {
@@ -81,9 +81,46 @@ export default () => {
 
         // address to coordinate while typing
         const addressName = document.getElementById('home_address');
+
         addressName.addEventListener('input', () => {
           getCoordinateOfAddress(addressName.value.replace(/ /g, '%20'));
         }, false);
+
+        const homePrice = document.getElementById('home_price');
+        const homeTotalRooms = document.getElementById('home_total_rooms');
+        const homeSize = document.getElementById('home_size');
+
+        homePrice.addEventListener('input', () => {
+          if (parseInt(homePrice.value, 10) < 0 || parseInt(homePrice.value, 10) > 2500) {
+            homePrice.classList.add('box__error');
+            console.log('added ');
+          } else {
+            console.log('remove');
+            homePrice.classList.remove('box__error');
+          }
+        }, false);
+
+
+        homeTotalRooms.addEventListener('input', () => {
+          if (parseInt(homeTotalRooms.value, 10) < 1 || parseInt(homeTotalRooms.value, 10) > 15) {
+            homeTotalRooms.classList.add('box__error');
+            console.log('added ');
+          } else {
+            console.log('remove');
+            homeTotalRooms.classList.remove('box__error');
+          }
+        }, false);
+
+        homeSize.addEventListener('input', () => {
+          if (parseInt(homeSize.value, 10) < 0 || parseInt(homeSize.value, 10) > 250) {
+            homeSize.classList.add('box__error');
+            console.log('added ');
+          } else {
+            console.log('remove');
+            homeSize.classList.remove('box__error');
+          }
+        }, false);
+
         // getCoordinateOfAddress(urlAddress);
         // console.log(urlAddress);
 
