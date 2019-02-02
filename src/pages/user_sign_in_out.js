@@ -20,10 +20,8 @@ const firebase = getInstance();
 
 export function signIn(e) {
   e.preventDefault();
-
   const email = document.getElementById('signin_email').value;
   const password = document.getElementById('signin_password').value;
-
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
@@ -60,8 +58,6 @@ export function signIn(e) {
           console.log('NOT LOGGED IN!');
         }
       });
-
-
       console.log(`User uid: ${response.user.uid} statusSignIn: ${status.statusSignIn}`);
     })
     .catch((error) => {

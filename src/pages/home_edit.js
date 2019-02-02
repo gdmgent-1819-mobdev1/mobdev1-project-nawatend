@@ -49,17 +49,18 @@ export default () => {
       header();
 
       // just default, it will change
-      let longtitude = 5.5;
-      let latitude = 51.5;
+      let longtitude = home.longtitude;
+      let latitude = home.latitude;
 
       const addressNameControle = document.getElementById('home_address');
       addressNameControle.addEventListener('input', () => {
         // address to coordinate -> forward geocoding
         getCoordinateOfAddress(addressNameControle.value.replace(/ /g, '%20'));
+        // get from localstorage
+        longtitude = localStorage.getItem('homeAddressLong');
+        latitude = localStorage.getItem('homeAddressLat');
       }, false);
-      // get from localstorage
-      longtitude = localStorage.getItem('homeAddressLong');
-      latitude = localStorage.getItem('homeAddressLat');
+
 
       const btnComfirmUpdate = document.getElementById('btnEditConfirm');
 
@@ -117,7 +118,7 @@ export default () => {
           );
 
           const updates = {};
-          updates[homesPath + currentHomeKey] = newHome;
+          updates[homesPath + currentHomeKey[lastPartIndex]] = newHome;
           firebase
             .database()
             .ref()

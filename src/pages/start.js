@@ -45,6 +45,18 @@ export default () => {
     localStorage.setItem('guest', false);
   }, false);
 
+  btnSignIn.addEventListener('touchstart', (e) => {
+    signIn(e);
+    console.log('signin clicked');
+    // prepare first to display
+    localStorage.setItem('modeRate', true);
+    localStorage.setItem('modeMap', false);
+    localStorage.setItem('modeList', false);
+    localStorage.setItem('modeFavorites', false);
+    localStorage.setItem('filtered', false);
+    localStorage.setItem('guest', false);
+  }, false);
+
   btnSignInGoogle.addEventListener('click', (e) => {
     signInGoogle(e);
   }, false);
